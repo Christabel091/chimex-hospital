@@ -89,6 +89,8 @@ import HeroSection from '../components/HeroSection.vue'
 import Section from '../components/Section.vue'
 import FormBuilder from '../components/FormBuilder.vue'
 import { hospitalConfig as config } from '../constants/config'
+import { db } from '../firebase.js'
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
 
 export default {
   name: 'Donate',
@@ -148,17 +150,14 @@ export default {
   },
   methods: {
     openDonationForm(level) {
-      alert(`Opening payment for ${level.level} donation (${level.amount})`)
-      // In a real app, this would open Stripe/PayPal integration
+      alert(`To donate ${level.amount} as a ${level.level}, please contact us via WhatsApp or email. Payment integration (Stripe/PayPal) coming soon!`)
     },
     async submitDonation(formData) {
-      // Handle donation submission
-      console.log('Donation submitted:', formData)
-      // In production, send to backend/payment processor
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          resolve()
-        }, 1000)
+      // 🔥 Save donation interest to Firebase Firestore → 'donations' collection
+      await addDoc(collection(db, 'donations'), {
+        ...formData,
+        submittedAt: serverTimestamp(),
+        status: 'pending_payment',
       })
     },
   },

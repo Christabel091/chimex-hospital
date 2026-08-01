@@ -116,6 +116,8 @@ import HeroSection from '../components/HeroSection.vue'
 import Section from '../components/Section.vue'
 import FormBuilder from '../components/FormBuilder.vue'
 import { hospitalConfig as config } from '../constants/config'
+import { db } from '../firebase.js'
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
 
 export default {
   name: 'Contact',
@@ -168,13 +170,11 @@ export default {
   },
   methods: {
     async submitContact(formData) {
-      // Handle contact form submission
-      console.log('Contact submitted:', formData)
-      // In production, send to backend email service
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          resolve()
-        }, 1000)
+      // 🔥 Save to Firebase Firestore → 'messages' collection
+      await addDoc(collection(db, 'messages'), {
+        ...formData,
+        submittedAt: serverTimestamp(),
+        read: false,
       })
     },
   },

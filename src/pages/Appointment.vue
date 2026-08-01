@@ -1,160 +1,191 @@
 <template>
   <div>
-    <!-- Hero Section -->
-    <HeroSection
-      title="Book an Appointment"
-      subtitle="Schedule your visit with our medical team"
-    />
+    <!-- Page Header -->
+    <div class="bg-gradient-to-r from-chimex-red to-red-700 text-white py-10 px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl font-bold mb-2">📅 Book an Appointment</h1>
+        <p class="text-red-100 text-lg">Fill in the form below and our team will confirm your visit</p>
+      </div>
+    </div>
 
-    <!-- Appointment Form -->
-    <Section :bgClass="'bg-gray-50'">
-      <template #default>
-        <div class="max-w-2xl mx-auto">
-          <p class="text-center text-lg text-gray-600 mb-8">
-            {{ config.appointment.description }}
-          </p>
-          <FormBuilder
-            :fields="appointmentFormFields"
-            :onSubmit="submitAppointment"
-          />
-        </div>
-      </template>
-    </Section>
+    <!-- Main: Form + Contact side by side -->
+    <div class="bg-gray-50 py-12 px-4">
+      <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
 
-    <!-- How It Works -->
-    <Section title="How It Works">
-      <template #default>
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div v-for="(step, index) in steps" :key="index" class="text-center">
-            <div class="w-16 h-16 bg-chimex-red text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-              {{ index + 1 }}
+        <!-- Appointment Form -->
+        <div class="lg:col-span-2 bg-white rounded-xl shadow-md p-8">
+          <h2 class="text-2xl font-bold text-chimex-dark mb-6">Request an Appointment</h2>
+
+          <!-- Success Message -->
+          <div v-if="submitted" class="bg-green-50 border border-green-300 text-green-800 rounded-lg p-6 text-center mb-6">
+            <div class="text-4xl mb-2">✅</div>
+            <h3 class="text-xl font-bold mb-1">Request Received!</h3>
+            <p>Thank you, <strong>{{ submittedName }}</strong>. We will call or WhatsApp you within 24 hours to confirm your appointment.</p>
+            <button @click="submitted = false" class="mt-4 text-sm text-green-700 underline">Submit another request</button>
+          </div>
+
+          <!-- Form -->
+          <form v-else @submit.prevent="submitAppointment" class="space-y-5">
+            <!-- Service Type -->
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1">
+                Service Type <span class="text-chimex-red">*</span>
+              </label>
+              <select v-model="form.serviceType" required class="input-field">
+                <option value="">-- Select a service --</option>
+                <option v-for="s in config.appointment.services" :key="s" :value="s">{{ s }}</option>
+              </select>
             </div>
-            <h3 class="text-lg font-bold text-chimex-dark mb-2">{{ step.title }}</h3>
-            <p class="text-gray-600">{{ step.description }}</p>
-          </div>
-        </div>
-      </template>
-    </Section>
 
-    <!-- Contact Info -->
-    <Section :bgClass="'bg-blue-50'" title="Need Help?">
-      <template #default>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div>
-            <h3 class="text-xl font-bold text-chimex-dark mb-4">Contact Us Directly</h3>
-            <div class="space-y-4">
+            <!-- Patient Name -->
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1">
+                Patient Full Name <span class="text-chimex-red">*</span>
+              </label>
+              <input v-model="form.patientName" type="text" required placeholder="e.g. Chukwuemeka Obi" class="input-field" />
+            </div>
+
+            <!-- Phone -->
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1">
+                Phone Number <span class="text-chimex-red">*</span>
+              </label>
+              <input v-model="form.phone" type="tel" required placeholder="+234 (0) 800 000 0000" class="input-field" />
+            </div>
+
+            <!-- Email -->
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1">
+                Email Address <span class="text-red-400 text-sm font-normal">(optional)</span>
+              </label>
+              <input v-model="form.email" type="email" placeholder="your@email.com" class="input-field" />
+            </div>
+
+            <!-- Preferred Date -->
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1">
+                Preferred Appointment Date <span class="text-chimex-red">*</span>
+              </label>
+              <input v-model="form.appointmentDate" type="date" required :min="today" class="input-field" />
+            </div>
+
+            <!-- Notes -->
+            <div>
+              <label class="block font-semibold text-gray-700 mb-1">Additional Notes</label>
+              <textarea v-model="form.notes" rows="3" placeholder="Any special requirements, symptoms, or concerns..." class="input-field"></textarea>
+            </div>
+
+            <!-- Error -->
+            <p v-if="errorMsg" class="text-chimex-red text-sm">{{ errorMsg }}</p>
+
+            <!-- Submit -->
+            <button type="submit" :disabled="submitting" class="btn-primary w-full text-lg disabled:opacity-50">
+              {{ submitting ? 'Submitting...' : 'Request Appointment' }}
+            </button>
+          </form>
+        </div>
+
+        <!-- Sidebar: Contact & Hours -->
+        <div class="space-y-6">
+          <!-- Contact -->
+          <div class="bg-white rounded-xl shadow-md p-6">
+            <h3 class="text-lg font-bold text-chimex-dark mb-4">📞 Contact Us Directly</h3>
+            <div class="space-y-3 text-gray-700">
+              <p><strong>Phone:</strong><br />{{ config.contact.phone }}</p>
               <p>
-                <strong>📞 Phone:</strong> {{ config.contact.phone }}
+                <strong>WhatsApp:</strong><br />
+                <a :href="'https://wa.me/' + config.contact.whatsapp.replace(/\D/g,'')"
+                   target="_blank" class="text-green-600 hover:underline">
+                  {{ config.contact.whatsapp }}
+                </a>
               </p>
-              <p>
-                <strong>💬 WhatsApp:</strong> {{ config.contact.whatsapp }}
-              </p>
-              <p>
-                <strong>📧 Email:</strong> {{ config.contact.email }}
+              <p><strong>Email:</strong><br />
+                <a :href="'mailto:' + config.contact.email" class="text-chimex-blue hover:underline">
+                  {{ config.contact.email }}
+                </a>
               </p>
             </div>
           </div>
-          <div>
-            <h3 class="text-xl font-bold text-chimex-dark mb-4">Operating Hours</h3>
-            <p class="text-gray-600 whitespace-pre-line">
-              {{ config.contactPage.hours }}
-            </p>
+
+          <!-- Hours -->
+          <div class="bg-white rounded-xl shadow-md p-6">
+            <h3 class="text-lg font-bold text-chimex-dark mb-4">🕐 Operating Hours</h3>
+            <p class="text-gray-600 whitespace-pre-line text-sm">{{ config.contactPage.hours }}</p>
+          </div>
+
+          <!-- How It Works -->
+          <div class="bg-chimex-red text-white rounded-xl p-6">
+            <h3 class="text-lg font-bold mb-4">How It Works</h3>
+            <ol class="space-y-3 text-sm">
+              <li v-for="(step, i) in steps" :key="i" class="flex items-start gap-3">
+                <span class="w-6 h-6 bg-white text-chimex-red rounded-full flex items-center justify-center font-bold flex-shrink-0 text-xs">{{ i + 1 }}</span>
+                <div>
+                  <strong>{{ step.title }}</strong>
+                  <p class="text-red-100">{{ step.description }}</p>
+                </div>
+              </li>
+            </ol>
           </div>
         </div>
-      </template>
-    </Section>
+
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import HeroSection from '../components/HeroSection.vue'
-import Section from '../components/Section.vue'
-import FormBuilder from '../components/FormBuilder.vue'
 import { hospitalConfig as config } from '../constants/config'
+import { db } from '../firebase.js'
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
 
 export default {
   name: 'Appointment',
-  components: {
-    HeroSection,
-    Section,
-    FormBuilder,
-  },
   data() {
+    const today = new Date().toISOString().split('T')[0]
     return {
       config,
-      appointmentFormFields: [
-        {
-          name: 'serviceType',
-          label: 'Service Type',
-          type: 'select',
-          required: true,
-          options: config.appointment.services,
-        },
-        {
-          name: 'patientName',
-          label: 'Patient Name',
-          type: 'text',
-          required: true,
-          placeholder: 'Full name',
-        },
-        {
-          name: 'phone',
-          label: 'Phone Number',
-          type: 'tel',
-          required: true,
-          placeholder: '+234 (0) XXX XXX XXXX',
-        },
-        {
-          name: 'email',
-          label: 'Email Address',
-          type: 'email',
-          required: true,
-          placeholder: 'your@email.com',
-        },
-        {
-          name: 'appointmentDate',
-          label: 'Preferred Appointment Date',
-          type: 'date',
-          required: true,
-        },
-        {
-          name: 'notes',
-          label: 'Additional Notes',
-          type: 'textarea',
-          required: false,
-          placeholder: 'Any special requirements or concerns...',
-        },
-      ],
+      today,
+      submitted: false,
+      submitting: false,
+      submittedName: '',
+      errorMsg: '',
+      form: {
+        serviceType: '',
+        patientName: '',
+        phone: '',
+        email: '',
+        appointmentDate: '',
+        notes: '',
+      },
       steps: [
-        {
-          title: 'Fill the Form',
-          description: 'Complete your appointment request with your preferred details',
-        },
-        {
-          title: 'Confirmation',
-          description: 'We review your request and confirm via phone or email',
-        },
-        {
-          title: 'Appointment',
-          description: 'Visit us on your scheduled date',
-        },
-        {
-          title: 'Care',
-          description: 'Receive expert medical care from our team',
-        },
+        { title: 'Fill the Form', description: 'Submit your details below' },
+        { title: 'Confirmation', description: 'We call/WhatsApp to confirm within 24hrs' },
+        { title: 'Your Visit', description: 'Come in on your scheduled date' },
+        { title: 'Expert Care', description: 'Receive compassionate sickle cell care' },
       ],
     }
   },
   methods: {
-    async submitAppointment(formData) {
-      // Handle appointment submission
-      console.log('Appointment submitted:', formData)
-      // In production, send to backend/calendar system
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          resolve()
-        }, 1000)
-      })
+    async submitAppointment() {
+      this.errorMsg = ''
+      this.submitting = true
+      try {
+        // 🔥 Save to Firebase Firestore → 'appointments' collection
+        await addDoc(collection(db, 'appointments'), {
+          ...this.form,
+          submittedAt: serverTimestamp(),
+          status: 'pending',
+        })
+
+        this.submittedName = this.form.patientName
+        this.submitted = true
+        this.form = { serviceType: '', patientName: '', phone: '', email: '', appointmentDate: '', notes: '' }
+      } catch (err) {
+        this.errorMsg = 'Something went wrong. Please call us directly.'
+        console.error(err)
+      } finally {
+        this.submitting = false
+      }
     },
   },
 }

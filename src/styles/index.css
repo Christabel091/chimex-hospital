@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #1a1a1a;
+  background-color: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.btn-primary {
+  @apply bg-chimex-red text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-200;
+}
+
+.btn-secondary {
+  @apply bg-chimex-blue text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 transition-colors duration-200;
+}
+
+.btn-outline {
+  @apply border-2 border-chimex-red text-chimex-red px-6 py-3 rounded-lg font-semibold hover:bg-chimex-red hover:text-white transition-colors duration-200;
+}
+
+.section-title {
+  @apply text-4xl font-bold text-center mb-12 text-chimex-dark;
+}
+
+.section-subtitle {
+  @apply text-xl text-center text-gray-600 mb-8;
+}
+
+.card {
+  @apply bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 overflow-hidden;
+}
+
+.input-field {
+  @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-chimex-red transition-colors duration-200;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    @apply text-2xl mb-8;
+  }
+}

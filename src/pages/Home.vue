@@ -63,18 +63,18 @@
     </Section>
 
     <!-- Call to Action Section -->
-    <Section :bgClass="'bg-gradient-to-r from-chimex-blue to-blue-600 text-white'">
+    <Section :bgClass="'bg-gradient-to-r from-chimex-red to-red-800 text-white'">
       <template #default>
         <div class="text-center">
           <h2 class="text-4xl font-bold mb-6">Ready to Take the Next Step?</h2>
-          <p class="text-xl mb-8 text-blue-100">
+          <p class="text-xl mb-8 text-red-100">
             Book an appointment or support our mission today
           </p>
           <div class="flex flex-col sm:flex-row justify-center gap-4">
-            <router-link to="/appointment" class="bg-white text-chimex-blue px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition">
+            <router-link to="/appointment" class="bg-white text-chimex-red px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition">
               Book Appointment
             </router-link>
-            <router-link to="/donate" class="border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-chimex-blue transition">
+            <router-link to="/donate" class="border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-chimex-red transition">
               Support Us Now
             </router-link>
           </div>

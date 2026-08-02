@@ -14,7 +14,7 @@
           <div class="text-center">
             <div class="text-5xl mb-4">📞</div>
             <h3 class="text-xl font-bold text-chimex-dark mb-2">Call Us</h3>
-            <a :href="`tel:${config.contact.phone}`" class="text-chimex-blue hover:text-blue-700">
+            <a :href="`tel:${config.contact.phone}`" class="text-chimex-red hover:text-red-700">
               {{ config.contact.phone }}
             </a>
           </div>
@@ -23,7 +23,7 @@
           <div class="text-center">
             <div class="text-5xl mb-4">💬</div>
             <h3 class="text-xl font-bold text-chimex-dark mb-2">WhatsApp</h3>
-            <a :href="`https://wa.me/${config.contact.whatsapp.replace(/\D/g, '')}`" target="_blank" rel="noopener noreferrer" class="text-chimex-blue hover:text-blue-700">
+            <a :href="`https://wa.me/${config.contact.whatsapp.replace(/\D/g, '')}`" target="_blank" rel="noopener noreferrer" class="text-chimex-red hover:text-red-700">
               {{ config.contact.whatsapp }}
             </a>
           </div>
@@ -32,7 +32,7 @@
           <div class="text-center">
             <div class="text-5xl mb-4">📧</div>
             <h3 class="text-xl font-bold text-chimex-dark mb-2">Email</h3>
-            <a :href="`mailto:${config.contact.email}`" class="text-chimex-blue hover:text-blue-700">
+            <a :href="`mailto:${config.contact.email}`" class="text-chimex-red hover:text-red-700">
               {{ config.contact.email }}
             </a>
           </div>
@@ -68,22 +68,22 @@
       <template #default>
         <div class="flex flex-col md:flex-row justify-center items-center gap-8">
           <a :href="config.contact.facebook" target="_blank" rel="noopener noreferrer" 
-             class="flex items-center space-x-2 text-chimex-blue hover:text-blue-700 text-lg font-semibold transition">
+             class="flex items-center space-x-2 text-chimex-red hover:text-red-700 text-lg font-semibold transition">
             <span>👍</span>
             <span>Facebook</span>
           </a>
           <a :href="config.contact.instagram" target="_blank" rel="noopener noreferrer" 
-             class="flex items-center space-x-2 text-chimex-blue hover:text-blue-700 text-lg font-semibold transition">
+             class="flex items-center space-x-2 text-chimex-red hover:text-red-700 text-lg font-semibold transition">
             <span>📷</span>
             <span>Instagram</span>
           </a>
           <a :href="config.contact.linkedin" target="_blank" rel="noopener noreferrer" 
-             class="flex items-center space-x-2 text-chimex-blue hover:text-blue-700 text-lg font-semibold transition">
+             class="flex items-center space-x-2 text-chimex-red hover:text-red-700 text-lg font-semibold transition">
             <span>💼</span>
             <span>LinkedIn</span>
           </a>
           <a :href="config.contact.youtube" target="_blank" rel="noopener noreferrer" 
-             class="flex items-center space-x-2 text-chimex-blue hover:text-blue-700 text-lg font-semibold transition">
+             class="flex items-center space-x-2 text-chimex-red hover:text-red-700 text-lg font-semibold transition">
             <span>▶️</span>
             <span>YouTube</span>
           </a>

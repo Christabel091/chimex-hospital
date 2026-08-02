@@ -100,7 +100,7 @@
                 </a>
               </p>
               <p><strong>Email:</strong><br />
-                <a :href="'mailto:' + config.contact.email" class="text-chimex-blue hover:underline">
+                <a :href="'mailto:' + config.contact.email" class="text-chimex-red hover:underline">
                   {{ config.contact.email }}
                 </a>
               </p>

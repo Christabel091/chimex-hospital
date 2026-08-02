@@ -28,7 +28,7 @@
               </div>
             </div>
           </div>
-          <div class="h-80 bg-blue-100 rounded-lg flex items-center justify-center text-6xl">
+          <div class="h-80 bg-red-100 rounded-lg flex items-center justify-center text-6xl">
             🏥
           </div>
         </div>

@@ -39,16 +39,16 @@
         <div>
           <h4 class="font-bold mb-4">Follow Us</h4>
           <div class="flex space-x-4 text-xl">
-            <a :href="config.contact.facebook" target="_blank" rel="noopener noreferrer" class="hover:text-chimex-blue transition">
+            <a :href="config.contact.facebook" target="_blank" rel="noopener noreferrer" class="hover:text-chimex-red transition">
               f
             </a>
-            <a :href="config.contact.instagram" target="_blank" rel="noopener noreferrer" class="hover:text-chimex-blue transition">
+            <a :href="config.contact.instagram" target="_blank" rel="noopener noreferrer" class="hover:text-chimex-red transition">
               📷
             </a>
-            <a :href="config.contact.linkedin" target="_blank" rel="noopener noreferrer" class="hover:text-chimex-blue transition">
+            <a :href="config.contact.linkedin" target="_blank" rel="noopener noreferrer" class="hover:text-chimex-red transition">
               in
             </a>
-            <a :href="config.contact.youtube" target="_blank" rel="noopener noreferrer" class="hover:text-chimex-blue transition">
+            <a :href="config.contact.youtube" target="_blank" rel="noopener noreferrer" class="hover:text-chimex-red transition">
               ▶️
             </a>
           </div>

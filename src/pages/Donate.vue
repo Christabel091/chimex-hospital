@@ -147,7 +147,7 @@
     <!-- NGO & Volunteer section -->
     <div class="bg-white py-12 px-4">
       <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="bg-blue-50 rounded-xl p-6">
+        <div class="bg-red-50 rounded-xl p-6">
           <h3 class="text-xl font-bold text-chimex-dark mb-3">NGO Partnerships</h3>
           <p class="text-gray-600 mb-4">{{ config.donate.ngoPartnerships }}</p>
           <p class="text-sm text-gray-500">Fill the form above and select <strong>"NGO Partnership"</strong> as your support type.</p>

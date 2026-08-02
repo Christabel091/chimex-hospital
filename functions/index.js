@@ -1,16 +1,16 @@
-const functions = require("firebase-functions");
-const admin = require("firebase-admin");
-const https = require("https");
+const functions = require('firebase-functions')
+const admin = require('firebase-admin')
+const https = require('https')
 
-admin.initializeApp();
+admin.initializeApp()
 
 // ─────────────────────────────────────────────────────────────
-// CONFIGURATION
-// Replace YOUR_CALLMEBOT_API_KEY after you activate CallMeBot
-// (see README for the 2-minute activation steps)
+// Secrets loaded from Firebase environment config (never in code)
+// Set these once with:
+//   firebase functions:config:set notify.phone="2348033560232" notify.apikey="YOUR_KEY"
 // ─────────────────────────────────────────────────────────────
-const DOCTOR_PHONE = "2348033560232"; // +234 8033560232 (no + sign)
-const CALLMEBOT_API_KEY = "YOUR_CALLMEBOT_API_KEY"; // ← replace this
+const DOCTOR_PHONE = functions.config().notify.phone
+const CALLMEBOT_API_KEY = functions.config().notify.apikey
 
 // Sends a WhatsApp message via CallMeBot (free service)
 function sendWhatsApp(message) {

@@ -2,12 +2,12 @@ import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDaBVpRthClDBT3k8ozllOH2Ij7F4JOWa0",
-  authDomain: "chimex-hospital.firebaseapp.com",
-  projectId: "chimex-hospital",
-  storageBucket: "chimex-hospital.firebasestorage.app",
-  messagingSenderId: "334039892635",
-  appId: "1:334039892635:web:c25aef6a578c68f7ad7c3e"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 }
 
 const app = initializeApp(firebaseConfig)

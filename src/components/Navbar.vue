@@ -14,11 +14,11 @@
 
       <!-- Desktop Menu -->
       <div class="hidden md:flex space-x-8 items-center">
-        <router-link to="/" class="text-gray-700 hover:text-chimex-red transition">Home</router-link>
-        <router-link to="/about" class="text-gray-700 hover:text-chimex-red transition">About Us</router-link>
-        <router-link to="/program" class="text-gray-700 hover:text-chimex-red transition">Program</router-link>
-        <router-link to="/donate" class="text-gray-700 hover:text-chimex-red transition">Support Us</router-link>
-        <router-link to="/contact" class="text-gray-700 hover:text-chimex-red transition">Contact</router-link>
+        <router-link to="/" exact class="nav-link">Home</router-link>
+        <router-link to="/about" class="nav-link">About Us</router-link>
+        <router-link to="/program" class="nav-link">Program</router-link>
+        <router-link to="/donate" class="nav-link">Support Us</router-link>
+        <router-link to="/contact" class="nav-link">Contact</router-link>
         <router-link to="/appointment" class="btn-primary text-sm">Book Appointment</router-link>
       </div>
 
@@ -32,13 +32,13 @@
     </div>
 
     <!-- Mobile Menu -->
-    <div v-if="mobileMenuOpen" class="md:hidden bg-gray-50 px-4 py-4 space-y-4">
-      <router-link to="/" @click="mobileMenuOpen = false" class="block text-gray-700 hover:text-chimex-red">Home</router-link>
-      <router-link to="/about" @click="mobileMenuOpen = false" class="block text-gray-700 hover:text-chimex-red">About Us</router-link>
-      <router-link to="/program" @click="mobileMenuOpen = false" class="block text-gray-700 hover:text-chimex-red">Program</router-link>
-      <router-link to="/donate" @click="mobileMenuOpen = false" class="block text-gray-700 hover:text-chimex-red">Support Us</router-link>
-      <router-link to="/contact" @click="mobileMenuOpen = false" class="block text-gray-700 hover:text-chimex-red">Contact</router-link>
-      <router-link to="/appointment" @click="mobileMenuOpen = false" class="btn-primary block text-center">Book Appointment</router-link>
+    <div v-if="mobileMenuOpen" class="md:hidden bg-gray-50 px-4 py-4 space-y-1">
+      <router-link to="/" exact @click="mobileMenuOpen = false" class="nav-link-mobile">Home</router-link>
+      <router-link to="/about" @click="mobileMenuOpen = false" class="nav-link-mobile">About Us</router-link>
+      <router-link to="/program" @click="mobileMenuOpen = false" class="nav-link-mobile">Program</router-link>
+      <router-link to="/donate" @click="mobileMenuOpen = false" class="nav-link-mobile">Support Us</router-link>
+      <router-link to="/contact" @click="mobileMenuOpen = false" class="nav-link-mobile">Contact</router-link>
+      <router-link to="/appointment" @click="mobileMenuOpen = false" class="btn-primary block text-center mt-2">Book Appointment</router-link>
     </div>
   </nav>
 </template>
@@ -53,3 +53,72 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+/* Base nav link */
+.nav-link {
+  position: relative;
+  color: #4b5563;
+  font-weight: 500;
+  padding-bottom: 4px;
+  transition: color 0.2s;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #DC143C;
+  transition: width 0.25s ease;
+  border-radius: 2px;
+}
+
+.nav-link:hover {
+  color: #DC143C;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Active page — red text + full underline bar */
+.nav-link.router-link-active,
+.nav-link.router-link-exact-active {
+  color: #DC143C;
+  font-weight: 700;
+}
+
+.nav-link.router-link-active::after,
+.nav-link.router-link-exact-active::after {
+  width: 100%;
+}
+
+/* Mobile nav link */
+.nav-link-mobile {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #4b5563;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.nav-link-mobile:hover {
+  color: #DC143C;
+  background-color: #fff1f2;
+}
+
+/* Active mobile link — red text + red left border */
+.nav-link-mobile.router-link-active,
+.nav-link-mobile.router-link-exact-active {
+  color: #DC143C;
+  font-weight: 700;
+  background-color: #fff1f2;
+  border-left: 3px solid #DC143C;
+  padding-left: 14px;
+}
+</style>
+

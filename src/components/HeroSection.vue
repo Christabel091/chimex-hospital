@@ -1,5 +1,7 @@
 <template>
-  <div class="bg-gradient-to-r from-chimex-red to-red-700 text-white py-16 md:py-24">
+  <div
+    class="bg-gradient-to-r from-chimex-red to-red-700 text-white py-16 md:py-24"
+  >
     <div class="max-w-7xl mx-auto px-4">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <!-- Text Content -->
@@ -11,18 +13,28 @@
             {{ subtitle }}
           </p>
           <div class="flex flex-col sm:flex-row gap-4">
-            <router-link to="/appointment" class="btn-primary bg-white text-chimex-red hover:bg-red-50">
-              {{ cta }}
+            <!-- Button 1: White background, red text — clearly visible on red hero -->
+            <router-link
+              to="/appointment"
+              class="inline-block bg-white text-chimex-red font-bold text-base px-8 py-4 rounded-lg shadow-lg hover:bg-gray-100 hover:shadow-xl transition-all duration-200 text-center border-2 border-white"
+            >
+              📅 {{ cta }}
             </router-link>
-            <router-link to="/donate" class="btn-outline border-white text-white hover:bg-white hover:text-chimex-red">
-              {{ supportCta }}
+            <!-- Button 2: Blue background, white text — contrasts with red hero -->
+            <router-link
+              to="/donate"
+              class="inline-block bg-chimex-blue text-white font-bold text-base px-8 py-4 rounded-lg shadow-lg hover:bg-blue-500 hover:shadow-xl transition-all duration-200 text-center border-2 border-chimex-blue"
+            >
+              ❤️ {{ supportCta }}
             </router-link>
           </div>
         </div>
 
         <!-- Image Placeholder -->
         <div class="flex justify-center">
-          <div class="w-full h-64 md:h-80 bg-red-600 rounded-lg flex items-center justify-center text-6xl">
+          <div
+            class="w-full h-64 md:h-80 bg-red-600 rounded-lg flex items-center justify-center text-6xl"
+          >
             🏥
           </div>
         </div>
@@ -33,24 +45,24 @@
 
 <script>
 export default {
-  name: 'HeroSection',
+  name: "HeroSection",
   props: {
     title: {
       type: String,
-      default: 'Expert Sickle Cell Care',
+      default: "Expert Sickle Cell Care",
     },
     subtitle: {
       type: String,
-      default: 'Compassionate healthcare for sickle cell patients',
+      default: "Compassionate healthcare for sickle cell patients",
     },
     cta: {
       type: String,
-      default: 'Book Appointment',
+      default: "Book Appointment",
     },
     supportCta: {
       type: String,
-      default: 'Support Our Program',
+      default: "Support Our Program",
     },
   },
-}
+};
 </script>

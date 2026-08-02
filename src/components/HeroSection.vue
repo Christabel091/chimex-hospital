@@ -13,19 +13,17 @@
             {{ subtitle }}
           </p>
           <div class="flex flex-col sm:flex-row gap-4">
-            <!-- Button 1: White background, red text — clearly visible on red hero -->
             <router-link
               to="/appointment"
               class="inline-block bg-white text-chimex-red font-bold text-base px-8 py-4 rounded-lg shadow-lg hover:bg-gray-100 hover:shadow-xl transition-all duration-200 text-center border-2 border-white"
             >
-              📅 {{ cta }}
+              {{ cta }}
             </router-link>
-            <!-- Button 2: Blue background, white text — contrasts with red hero -->
             <router-link
               to="/donate"
-              class="inline-block bg-chimex-blue text-white font-bold text-base px-8 py-4 rounded-lg shadow-lg hover:bg-blue-500 hover:shadow-xl transition-all duration-200 text-center border-2 border-chimex-blue"
+              class="inline-block bg-white text-chimex-red font-bold text-base px-8 py-4 rounded-lg shadow-lg hover:bg-gray-100 hover:shadow-xl transition-all duration-200 text-center border-2 border-white"
             >
-              ❤️ {{ supportCta }}
+              {{ supportCta }}
             </router-link>
           </div>
         </div>

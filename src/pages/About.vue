@@ -43,9 +43,16 @@
       <template #default>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div v-for="leader in config.about.leadership" :key="leader.name" class="card overflow-hidden">
-            <!-- Image Placeholder -->
-            <div class="w-full h-64 bg-gray-300 flex items-center justify-center text-6xl">
-              👨‍⚕️
+            <!-- Leader Image -->
+            <div class="w-full h-64 bg-gray-300 flex items-center justify-center text-6xl overflow-hidden">
+              <img
+                v-if="isImageVisible(leader)"
+                :src="leader.image"
+                :alt="leader.name"
+                class="w-full h-full object-cover"
+                @error="handleImageError(leader.name)"
+              />
+              <span v-else>👨‍⚕️</span>
             </div>
             <!-- Content -->
             <div class="p-6">
@@ -108,7 +115,19 @@ export default {
   data() {
     return {
       config,
+      imageLoadFailed: {},
     }
+  },
+  methods: {
+    isImageVisible(leader) {
+      return !!leader.image && !this.imageLoadFailed[leader.name]
+    },
+    handleImageError(name) {
+      this.imageLoadFailed = {
+        ...this.imageLoadFailed,
+        [name]: true,
+      }
+    },
   },
 }
 </script>

@@ -6,8 +6,8 @@ export const hospitalConfig = {
   
   // Contact Information
   contact: {
-    phone: '+234 (0) XXX XXX XXXX',
-    whatsapp: '+234 (0) XXX XXX XXXX',
+    phone: '+234 (0) 806 332 6956',
+    whatsapp: '+234 (0) 803 356 0232',
     email: 'info@chimexhospital.com',
     facebook: 'https://facebook.com/chimexhospital',
     linkedin: 'https://linkedin.com/company/chimexhospital',
@@ -64,11 +64,11 @@ export const hospitalConfig = {
     ],
     leadership: [
       {
-        name: 'Dr. [Chief Medical Officer Name]',
-        title: 'Chief Medical Officer',
-        qualifications: 'MD, Hematology Specialist',
+        name: 'Professor Bertrand Obi Nwosu, MBBS(Ib), FWACS, FCR cert (Harvard), FICS',
+        title: 'Founder',
+        qualifications: 'MD',
         experience: '20+ years in sickle cell care',
-        image: '/images/doctor-1.jpg',
+        image: '/images/doctor-1.png',
       },
       {
         name: 'Dr. [Consultant Name]',

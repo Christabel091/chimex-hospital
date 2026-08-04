@@ -44,6 +44,7 @@ about: {
 ```
 
 ### Adding Photos
+
 1. Put hospital/doctor photos in the `public/images/` folder
 2. Name them clearly: `doctor-1.jpg`, `hospital-front.jpg`, `team.jpg`
 3. Update the `image:` path in `config.js` to match
@@ -56,6 +57,7 @@ When someone submits an appointment or support form, the data saves to Firebase.
 **To automatically notify doctors via WhatsApp or email**, use one of these options:
 
 ### Option A: Firebase Extension (Email) — Easiest
+
 1. Go to [Firebase Console](https://console.firebase.google.com) → your project
 2. Click **"Extensions"** in the left sidebar
 3. Search **"Trigger Email"** → Install it
@@ -63,12 +65,14 @@ When someone submits an appointment or support form, the data saves to Firebase.
 5. Every new `appointments` or `donations` document will trigger an email
 
 ### Option B: WhatsApp Notification via Twilio (Requires account)
+
 1. Sign up at [twilio.com](https://twilio.com) (free trial available)
 2. Enable the WhatsApp Sandbox
 3. Add a Firebase Cloud Function that triggers on new documents and sends a WhatsApp message
 4. **Tell me your doctor's WhatsApp number and I will write the function code for you**
 
 ### Option C: Check Firebase Console Manually (Works now, no setup needed)
+
 1. Go to [console.firebase.google.com](https://console.firebase.google.com)
 2. Click your `chimex-hospital` project
 3. Click **Firestore Database**
@@ -108,12 +112,14 @@ service cloud.firestore {
 Firebase Hosting is free and gives you a shareable link immediately.
 
 ### One-time setup (do once):
+
 ```bash
 npm install -g firebase-tools
 firebase login
 ```
 
 ### Deploy:
+
 ```bash
 cd chimex-hospital
 npm run build
@@ -121,11 +127,13 @@ firebase init hosting
 ```
 
 When `firebase init` asks questions, answer:
+
 - **What do you want to use as your public directory?** → type `dist`
 - **Configure as a single-page app?** → `y`
 - **Overwrite dist/index.html?** → `n`
 
 Then:
+
 ```bash
 firebase deploy
 ```
@@ -134,23 +142,54 @@ Your live link will look like: `https://chimex-hospital.web.app`
 
 ---
 
-## 🌐 STEP 5 — Custom Domain (Optional, ~$10–15/year)
+## 🌐 STEP 5 — Buy a Google Domain and Connect It (Detailed)
 
-To use a custom domain like `chimexhospital.com`:
+If you want a custom domain (example: `chimexhospital.org`) instead of only `chimex-hospital.web.app`, do this:
 
-1. **Buy a domain** from one of these (cheapest options):
-   - [Namecheap.com](https://namecheap.com) (~$9/year)
-   - [Google Domains](https://domains.google) (~$12/year)
+### 5.1 Buy the domain from Google
+1. Go to [Google Domains](https://domains.google) and sign in with your Google account
+2. Search for your preferred domain name (e.g. `chimexhospital.org`)
+3. Choose the domain and complete payment (about $12/year)
+4. Keep the domain in the same Google account you use for Firebase
 
-2. In Firebase Console → Hosting → **Add custom domain**
-3. Follow Firebase's instructions to point your domain to Firebase
-4. SSL (https://) is included free
+### 5.2 Deploy your site first (must be live before domain connection)
+Run:
+
+```bash
+cd chimex-hospital
+npm run build
+firebase deploy
+```
+
+### 5.3 Attach the bought domain to Firebase Hosting
+1. Open Firebase Console → **Hosting**
+2. Click **Add custom domain**
+3. Enter your domain (e.g. `chimexhospital.org`) and continue
+4. Firebase will show DNS records to add (TXT + A records or CNAME)
+
+### 5.4 Add DNS records in Google Domains
+1. Open Google Domains → your domain → **DNS**
+2. Add exactly the records Firebase asks for
+3. Save DNS changes
+4. Go back to Firebase and click **Verify**
+
+### 5.5 Wait for SSL certificate
+- Firebase automatically provisions HTTPS SSL
+- This can take a few minutes to a few hours
+- After complete, your site will be live on:
+  - `https://chimexhospital.org`
+  - and optionally `https://www.chimexhospital.org`
+
+### 5.6 Optional redirect (recommended)
+In Firebase Hosting, set redirect so one version is primary:
+- `www.chimexhospital.org` → `chimexhospital.org` (or vice versa)
 
 ---
 
 ## 📱 STEP 6 — Optional: WhatsApp Business
 
 For the hospital to look professional on WhatsApp:
+
 1. Download **WhatsApp Business** app on the hospital phone
 2. Set up a business profile with hospital name, hours, and address
 3. Update the WhatsApp number in `config.js`
@@ -179,33 +218,33 @@ cd chimex-hospital
 npm install
 npm run dev
 ```
+
 Visit: `http://localhost:5173`
 
 ## 📁 Key Files
 
-| File | Purpose |
-|------|---------|
+| File                      | Purpose                          |
+| ------------------------- | -------------------------------- |
 | `src/constants/config.js` | ⭐ ALL content — edit this first |
-| `src/pages/` | The 6 page components |
-| `src/components/` | Navbar, footer, reusable parts |
-| `src/firebase.js` | Firebase connection |
-| `public/images/` | Put all photos here |
+| `src/pages/`              | The 6 page components            |
+| `src/components/`         | Navbar, footer, reusable parts   |
+| `src/firebase.js`         | Firebase connection              |
+| `public/images/`          | Put all photos here              |
 
 ## 🏥 Pages
 
-| Page | URL | What it does |
-|------|-----|-------------|
-| Home | `/` | Welcome, services, stats, CTA |
-| About Us | `/about` | Mission, team, values |
-| Programme | `/program` | Services, success stories, impact |
-| Support Us | `/donate` | Pledge form → saves to Firebase |
-| Book Appointment | `/appointment` | Booking form → saves to Firebase |
-| Contact | `/contact` | Contact info, message form, social |
+| Page             | URL            | What it does                       |
+| ---------------- | -------------- | ---------------------------------- |
+| Home             | `/`            | Welcome, services, stats, CTA      |
+| About Us         | `/about`       | Mission, team, values              |
+| Programme        | `/program`     | Services, success stories, impact  |
+| Support Us       | `/donate`      | Pledge form → saves to Firebase    |
+| Book Appointment | `/appointment` | Booking form → saves to Firebase   |
+| Contact          | `/contact`     | Contact info, message form, social |
 
 ---
 
 **Built with ❤️ for Chimex Hospital — Caring for Sickle Cell Warriors in Nnewi, Nigeria**
-
 
 ## ✨ Features
 
@@ -247,14 +286,14 @@ Visit `http://localhost:5173` (or the port shown in terminal)
 
 ## 📁 Key Files
 
-| File | Purpose |
-|------|---------|
+| File                      | Purpose                                    |
+| ------------------------- | ------------------------------------------ |
 | `src/constants/config.js` | ⭐ **EDIT THIS** - All content & messaging |
-| `src/pages/` | All 6 page components |
-| `src/components/` | Reusable Vue components |
-| `src/styles/index.css` | Tailwind CSS configuration |
-| `src/router.js` | URL routing setup |
-| `SETUP_GUIDE.md` | Detailed setup & customization guide |
+| `src/pages/`              | All 6 page components                      |
+| `src/components/`         | Reusable Vue components                    |
+| `src/styles/index.css`    | Tailwind CSS configuration                 |
+| `src/router.js`           | URL routing setup                          |
+| `SETUP_GUIDE.md`          | Detailed setup & customization guide       |
 
 ## 🎯 Pages Overview
 
@@ -268,21 +307,25 @@ Visit `http://localhost:5173` (or the port shown in terminal)
 ## ⚡ Quick Edits
 
 ### Change Hospital Name & Contact Info
+
 Edit `src/constants/config.js`:
+
 ```javascript
 export const hospitalConfig = {
-  name: 'Chimex Hospital',
-  address: 'Nnewi, Nigeria',
+  name: "Chimex Hospital",
+  address: "Nnewi, Nigeria",
   contact: {
-    phone: '+234 (0) XXX XXX XXXX',
-    email: 'info@chimexhospital.com',
+    phone: "+234 (0) XXX XXX XXXX",
+    email: "info@chimexhospital.com",
     // ... more
-  }
-}
+  },
+};
 ```
 
 ### Update Colors
+
 Edit `tailwind.config.js`:
+
 ```javascript
 theme: {
   extend: {
@@ -295,6 +338,7 @@ theme: {
 ```
 
 ### Add Images
+
 1. Place images in `public/images/`
 2. Update paths in `config.js` or components
 3. Replace emoji placeholders with image URLs
@@ -302,18 +346,21 @@ theme: {
 ## 🚢 Deployment
 
 ### Netlify (Recommended)
+
 ```bash
 npm install -g netlify-cli
 netlify deploy --prod
 ```
 
 ### Vercel
+
 ```bash
 npm install -g vercel
 vercel
 ```
 
 ### GitHub Pages
+
 ```bash
 npm run build
 # Upload dist/ folder to your hosting
@@ -333,7 +380,7 @@ See `SETUP_GUIDE.md` for detailed deployment instructions.
 ## 📱 Responsive Breakpoints
 
 - **Mobile:** < 768px
-- **Tablet:** 768px - 1024px  
+- **Tablet:** 768px - 1024px
 - **Desktop:** > 1024px
 
 ## 🔐 Security
@@ -365,15 +412,18 @@ See `SETUP_GUIDE.md` for detailed deployment instructions.
 ## 🆘 Troubleshooting
 
 **Port already in use:**
+
 ```bash
 npm run dev -- --port 3000
 ```
 
 **Styles not showing:**
+
 - Restart dev server
 - Clear browser cache (Ctrl+Shift+Delete)
 
 **Build errors:**
+
 ```bash
 rm -rf node_modules package-lock.json
 npm install

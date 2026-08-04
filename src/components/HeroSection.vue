@@ -29,12 +29,17 @@
         </div>
 
         <!-- Hero Image -->
-        <div class="flex justify-center">
-          <img
-            src="/images/hero-medical.png"
-            alt="Chimex Hospital medical care team"
-            class="w-full h-64 md:h-80 rounded-lg object-cover shadow-lg"
-          />
+        <div class="flex justify-center w-full">
+          <div class="relative w-full h-64 md:h-80 rounded-lg overflow-hidden shadow-lg">
+            <img
+              src="/images/hero-medical.png"
+              alt="Chimex Hospital building"
+              class="w-full h-full object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-chimex-red/45 via-red-700/20 to-transparent pointer-events-none"
+            ></div>
+          </div>
         </div>
       </div>
     </div>

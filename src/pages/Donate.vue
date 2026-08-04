@@ -139,6 +139,11 @@
                   {{ config.contact.email }}
                 </a>
               </p>
+              <p v-if="config.contact.secondaryEmail">
+                <a :href="'mailto:' + config.contact.secondaryEmail" class="underline text-white">
+                  {{ config.contact.secondaryEmail }}
+                </a>
+              </p>
             </div>
           </div>
 

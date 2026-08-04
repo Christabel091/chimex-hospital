@@ -49,6 +49,14 @@
             >
               {{ config.contact.email }}
             </a>
+            <div v-if="config.contact.secondaryEmail" class="mt-1">
+              <a
+                :href="`mailto:${config.contact.secondaryEmail}`"
+                class="text-chimex-red hover:text-red-700"
+              >
+                {{ config.contact.secondaryEmail }}
+              </a>
+            </div>
           </div>
         </div>
       </template>

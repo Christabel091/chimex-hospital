@@ -41,7 +41,7 @@
     <!-- Leadership Team -->
     <Section :bgClass="'bg-gray-50'" title="Leadership Team" subtitle="Meet our dedicated medical professionals">
       <template #default>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           <div v-for="leader in config.about.leadership" :key="leader.name" class="card overflow-hidden">
             <!-- Leader Image -->
             <div class="w-full h-64 bg-gray-300 flex items-center justify-center text-6xl overflow-hidden">

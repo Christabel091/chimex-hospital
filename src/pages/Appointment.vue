@@ -105,6 +105,14 @@
                 <a :href="'mailto:' + config.contact.email" class="text-chimex-red hover:underline">
                   {{ config.contact.email }}
                 </a>
+                <br />
+                <a
+                  v-if="config.contact.secondaryEmail"
+                  :href="'mailto:' + config.contact.secondaryEmail"
+                  class="text-chimex-red hover:underline"
+                >
+                  {{ config.contact.secondaryEmail }}
+                </a>
               </p>
             </div>
           </div>

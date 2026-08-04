@@ -45,6 +45,10 @@
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-chimex-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16v16H4z"></path><path d="m22 6-10 7L2 6"></path></svg>
               <span>{{ config.contact.email }}</span>
             </li>
+            <li v-if="config.contact.secondaryEmail" class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-chimex-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16v16H4z"></path><path d="m22 6-10 7L2 6"></path></svg>
+              <span>{{ config.contact.secondaryEmail }}</span>
+            </li>
             <li class="flex items-center gap-2">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-chimex-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4.5 8-12a8 8 0 1 0-16 0c0 7.5 8 12 8 12z"></path><circle cx="12" cy="10" r="3"></circle></svg>
               <span>{{ config.name }}, {{ config.address }}</span>

@@ -3,8 +3,25 @@
     <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
       <!-- Logo -->
       <router-link to="/" class="flex items-center space-x-2">
-        <div class="w-10 h-10 bg-chimex-red rounded-full flex items-center justify-center">
-          <span class="text-white font-bold text-lg">⚕️</span>
+        <div
+          class="w-10 h-10 bg-chimex-red rounded-full flex items-center justify-center"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-5 h-5 text-white"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M12 2v20"></path>
+            <path d="M8 6h8"></path>
+            <path d="M9 12h6"></path>
+            <path d="M10 18h4"></path>
+          </svg>
         </div>
         <div>
           <div class="font-bold text-chimex-dark">Chimex Hospital</div>
@@ -19,39 +36,87 @@
         <router-link to="/program" class="nav-link">Program</router-link>
         <router-link to="/donate" class="nav-link">Support Us</router-link>
         <router-link to="/contact" class="nav-link">Contact</router-link>
-        <router-link to="/appointment" class="btn-primary text-sm">Book Appointment</router-link>
+        <router-link to="/appointment" class="btn-primary text-sm"
+          >Book Appointment</router-link
+        >
       </div>
 
       <!-- Mobile Menu Button -->
-      <button 
+      <button
         @click="mobileMenuOpen = !mobileMenuOpen"
         class="md:hidden text-gray-700 text-2xl"
+        aria-label="Toggle navigation menu"
       >
-        ☰
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-7 h-7"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
       </button>
     </div>
 
     <!-- Mobile Menu -->
     <div v-if="mobileMenuOpen" class="md:hidden bg-gray-50 px-4 py-4 space-y-1">
-      <router-link to="/" exact @click="mobileMenuOpen = false" class="nav-link-mobile">Home</router-link>
-      <router-link to="/about" @click="mobileMenuOpen = false" class="nav-link-mobile">About Us</router-link>
-      <router-link to="/program" @click="mobileMenuOpen = false" class="nav-link-mobile">Program</router-link>
-      <router-link to="/donate" @click="mobileMenuOpen = false" class="nav-link-mobile">Support Us</router-link>
-      <router-link to="/contact" @click="mobileMenuOpen = false" class="nav-link-mobile">Contact</router-link>
-      <router-link to="/appointment" @click="mobileMenuOpen = false" class="btn-primary block text-center mt-2">Book Appointment</router-link>
+      <router-link
+        to="/"
+        exact
+        @click="mobileMenuOpen = false"
+        class="nav-link-mobile"
+        >Home</router-link
+      >
+      <router-link
+        to="/about"
+        @click="mobileMenuOpen = false"
+        class="nav-link-mobile"
+        >About Us</router-link
+      >
+      <router-link
+        to="/program"
+        @click="mobileMenuOpen = false"
+        class="nav-link-mobile"
+        >Program</router-link
+      >
+      <router-link
+        to="/donate"
+        @click="mobileMenuOpen = false"
+        class="nav-link-mobile"
+        >Support Us</router-link
+      >
+      <router-link
+        to="/contact"
+        @click="mobileMenuOpen = false"
+        class="nav-link-mobile"
+        >Contact</router-link
+      >
+      <router-link
+        to="/appointment"
+        @click="mobileMenuOpen = false"
+        class="btn-primary block text-center mt-2"
+        >Book Appointment</router-link
+      >
     </div>
   </nav>
 </template>
 
 <script>
 export default {
-  name: 'Navbar',
+  name: "Navbar",
   data() {
     return {
       mobileMenuOpen: false,
-    }
+    };
   },
-}
+};
 </script>
 
 <style scoped>
@@ -65,19 +130,19 @@ export default {
 }
 
 .nav-link::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -4px;
   left: 0;
   width: 0%;
   height: 2px;
-  background-color: #DC143C;
+  background-color: #dc143c;
   transition: width 0.25s ease;
   border-radius: 2px;
 }
 
 .nav-link:hover {
-  color: #DC143C;
+  color: #dc143c;
 }
 
 .nav-link:hover::after {
@@ -87,7 +152,7 @@ export default {
 /* Active page — red text + full underline bar */
 .nav-link.router-link-active,
 .nav-link.router-link-exact-active {
-  color: #DC143C;
+  color: #dc143c;
   font-weight: 700;
 }
 
@@ -107,18 +172,17 @@ export default {
 }
 
 .nav-link-mobile:hover {
-  color: #DC143C;
+  color: #dc143c;
   background-color: #fff1f2;
 }
 
 /* Active mobile link — red text + red left border */
 .nav-link-mobile.router-link-active,
 .nav-link-mobile.router-link-exact-active {
-  color: #DC143C;
+  color: #dc143c;
   font-weight: 700;
   background-color: #fff1f2;
-  border-left: 3px solid #DC143C;
+  border-left: 3px solid #dc143c;
   padding-left: 14px;
 }
 </style>
-

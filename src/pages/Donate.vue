@@ -19,7 +19,9 @@
 
           <!-- Success Message -->
           <div v-if="submitted" class="bg-green-50 border border-green-300 text-green-800 rounded-lg p-6 text-center">
-            <div class="text-4xl mb-3">🙏</div>
+            <div class="w-14 h-14 mx-auto mb-3 rounded-full bg-green-100 text-green-700 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            </div>
             <h3 class="text-xl font-bold mb-2">Thank You, {{ submittedName }}!</h3>
             <p class="mb-4">Your support pledge has been received. Here is what happens next:</p>
             <ol class="text-left space-y-2 mb-6 text-sm max-w-sm mx-auto">
@@ -102,10 +104,10 @@
           <div class="bg-white rounded-xl shadow-md p-6">
             <h3 class="text-lg font-bold text-chimex-dark mb-3">Why Support Us?</h3>
             <ul class="space-y-3 text-sm text-gray-600">
-              <li class="flex gap-2"><span class="text-chimex-red font-bold">✓</span> Free care for sickle cell patients across South-East Nigeria</li>
-              <li class="flex gap-2"><span class="text-chimex-red font-bold">✓</span> 5,000+ patients already served</li>
-              <li class="flex gap-2"><span class="text-chimex-red font-bold">✓</span> 100% of donations go directly to patient care</li>
-              <li class="flex gap-2"><span class="text-chimex-red font-bold">✓</span> Transparent impact reports shared with donors</li>
+              <li class="flex gap-2"><span class="text-chimex-red font-bold">•</span> Free care for sickle cell patients across South-East Nigeria</li>
+              <li class="flex gap-2"><span class="text-chimex-red font-bold">•</span> 5,000+ patients already served</li>
+              <li class="flex gap-2"><span class="text-chimex-red font-bold">•</span> 100% of donations go directly to patient care</li>
+              <li class="flex gap-2"><span class="text-chimex-red font-bold">•</span> Transparent impact reports shared with donors</li>
             </ul>
           </div>
 
@@ -125,16 +127,16 @@
             <h3 class="text-lg font-bold mb-3">Prefer to Talk First?</h3>
             <p class="text-sm text-red-100 mb-3">Reach out directly and we will be happy to discuss how you can help.</p>
             <div class="space-y-2 text-sm">
-              <p>📞 {{ config.contact.phone }}</p>
+              <p>Phone: {{ config.contact.phone }}</p>
               <p>
                 <a :href="'https://wa.me/' + config.contact.whatsapp.replace(/\D/g,'')"
                    target="_blank" class="underline text-white">
-                  💬 WhatsApp Us
+                  WhatsApp Us
                 </a>
               </p>
               <p>
                 <a :href="'mailto:' + config.contact.email" class="underline text-white">
-                  📧 {{ config.contact.email }}
+                  {{ config.contact.email }}
                 </a>
               </p>
             </div>
@@ -213,4 +215,3 @@ export default {
   },
 }
 </script>
-

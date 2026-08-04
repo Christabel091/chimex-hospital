@@ -3,7 +3,7 @@
     <!-- Page Header -->
     <div class="bg-gradient-to-r from-chimex-red to-red-700 text-white py-10 px-4">
       <div class="max-w-3xl mx-auto text-center">
-        <h1 class="text-4xl font-bold mb-2">📅 Book an Appointment</h1>
+        <h1 class="text-4xl font-bold mb-2">Book an Appointment</h1>
         <p class="text-red-100 text-lg">Fill in the form below and our team will confirm your visit</p>
       </div>
     </div>
@@ -18,7 +18,9 @@
 
           <!-- Success Message -->
           <div v-if="submitted" class="bg-green-50 border border-green-300 text-green-800 rounded-lg p-6 text-center mb-6">
-            <div class="text-4xl mb-2">✅</div>
+            <div class="w-14 h-14 mx-auto mb-2 rounded-full bg-green-100 text-green-700 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            </div>
             <h3 class="text-xl font-bold mb-1">Request Received!</h3>
             <p>Thank you, <strong>{{ submittedName }}</strong>. We will call or WhatsApp you within 24 hours to confirm your appointment.</p>
             <button @click="submitted = false" class="mt-4 text-sm text-green-700 underline">Submit another request</button>
@@ -89,7 +91,7 @@
         <div class="space-y-6">
           <!-- Contact -->
           <div class="bg-white rounded-xl shadow-md p-6">
-            <h3 class="text-lg font-bold text-chimex-dark mb-4">📞 Contact Us Directly</h3>
+            <h3 class="text-lg font-bold text-chimex-dark mb-4">Contact Us Directly</h3>
             <div class="space-y-3 text-gray-700">
               <p><strong>Phone:</strong><br />{{ config.contact.phone }}</p>
               <p>
@@ -109,7 +111,7 @@
 
           <!-- Hours -->
           <div class="bg-white rounded-xl shadow-md p-6">
-            <h3 class="text-lg font-bold text-chimex-dark mb-4">🕐 Operating Hours</h3>
+            <h3 class="text-lg font-bold text-chimex-dark mb-4">Operating Hours</h3>
             <p class="text-gray-600 whitespace-pre-line text-sm">{{ config.contactPage.hours }}</p>
           </div>
 

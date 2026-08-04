@@ -62,15 +62,16 @@
     </Section>
 
     <!-- Success Stories -->
-    <Section :bgClass="'bg-gray-50'" title="Success Stories" subtitle="Real stories from our patients and families">
+    <Section :bgClass="'bg-gray-50'" title="Success Stories" subtitle="Anonymized impact highlights from our programme">
       <template #default>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div v-for="story in config.program.successStories" :key="story.name" class="card overflow-hidden">
-            <img
-              :src="story.image"
-              :alt="story.name"
-              class="w-full h-48 object-cover"
-            />
+            <div class="w-full h-48 bg-red-50 flex flex-col items-center justify-center text-chimex-red">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                <path d="M20 6 9 17l-5-5"></path>
+              </svg>
+              <span class="font-semibold text-sm">Recovered & Thriving</span>
+            </div>
             <!-- Content -->
             <div class="p-6">
               <h3 class="text-xl font-bold text-chimex-dark mb-3">{{ story.name }}</h3>

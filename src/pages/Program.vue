@@ -28,9 +28,11 @@
               </div>
             </div>
           </div>
-          <div class="h-80 bg-red-100 rounded-lg flex items-center justify-center text-6xl">
-            🏥
-          </div>
+          <img
+            src="/images/program-overview.jpg"
+            alt="Sickle cell programme care team and facilities"
+            class="h-80 w-full rounded-lg object-cover shadow-md"
+          />
         </div>
       </template>
     </Section>
@@ -64,10 +66,11 @@
       <template #default>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div v-for="story in config.program.successStories" :key="story.name" class="card overflow-hidden">
-            <!-- Image Placeholder -->
-            <div class="w-full h-48 bg-gray-300 flex items-center justify-center text-5xl">
-              🙏
-            </div>
+            <img
+              :src="story.image"
+              :alt="story.name"
+              class="w-full h-48 object-cover"
+            />
             <!-- Content -->
             <div class="p-6">
               <h3 class="text-xl font-bold text-chimex-dark mb-3">{{ story.name }}</h3>

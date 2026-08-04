@@ -48,6 +48,18 @@ about: {
 1. Put hospital/doctor photos in the `public/images/` folder
 2. Name them clearly: `doctor-1.jpg`, `hospital-front.jpg`, `team.jpg`
 3. Update the `image:` path in `config.js` to match
+4. For the current stock images already added, see:
+   - `public/images/` (local image files used in the app)
+   - `public/images/ATTRIBUTIONS.csv` (source URLs + license info)
+
+### Stock Image Paths Used in the Site
+
+- Hero: `/images/hero-medical.jpg`
+- Home About section: `/images/home-about-care.jpg`
+- Programme overview: `/images/program-overview.jpg`
+- Services: `/images/service-diagnosis.jpg`, `/images/service-pain-care.jpg`, `/images/service-chronic-care.jpg`, `/images/service-genetic.jpg`, `/images/service-education.jpg`
+- Success stories: `/images/success-1.jpg`, `/images/success-2.jpg`, `/images/success-3.jpg`
+- Contact map placeholder: `/images/map-placeholder.jpg`
 
 ---
 

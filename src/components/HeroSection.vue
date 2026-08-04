@@ -28,13 +28,13 @@
           </div>
         </div>
 
-        <!-- Image Placeholder -->
+        <!-- Hero Image -->
         <div class="flex justify-center">
-          <div
-            class="w-full h-64 md:h-80 bg-red-600 rounded-lg flex items-center justify-center text-6xl"
-          >
-            🏥
-          </div>
+          <img
+            src="/images/hero-medical.jpg"
+            alt="Chimex Hospital medical care team"
+            class="w-full h-64 md:h-80 rounded-lg object-cover shadow-lg"
+          />
         </div>
       </div>
     </div>
